@@ -1,0 +1,12 @@
+@charset 'utf-8';
+
+@font-face {
+    font-family: "DIN";
+    src:url("../fonts/URWDIN-Medium.eot");
+    src:url("../fonts/URWDIN-Medium.eot?#iefix") format("embedded-opentype"),
+      url("../fonts/URWDIN-Medium.woff") format("woff"),
+      url("../fonts/URWDIN-Medium.ttf") format("truetype"),
+      url("../fonts/URWDIN-Medium.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
+  }

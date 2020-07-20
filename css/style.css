@@ -1,0 +1,218 @@
+@charset "utf-8";
+/**
+ * ベース
+ */
+html {
+    font-size: 14px;
+}
+body {
+    font-size: 1rem;
+    font-family: 'Noto Sans JP', '游ゴシック','游ゴシック体', 'Yu Gothic', 'YuGothic', 'ヒラギノ角ゴPro W3','Hiragino Kaku Gothic Pro', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', メイリオ, Meiryo, sans-serif;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #333;
+}
+
+
+
+
+/**
+ * bootstrap リセット
+ */
+dd {
+  margin-bottom: 0;
+}
+
+
+
+
+
+/**
+ * 汎用スタイル
+ */
+.offset-y-s {
+    padding: 2rem 0;
+}
+
+.offset-y-m {
+    padding: 4rem 0;
+}
+
+.heading-h2 {
+  display: block;
+  padding: 1rem;
+  margin: 0 0 1.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  border-top: 3px solid #d2caaf;
+  background: #f4efdf;
+}
+
+[class^="balloon-"], 
+[class*=" balloon-"] { 
+  position: relative;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+[class^="balloon-"]::before, 
+[class*=" balloon-"]::before {    
+  content: '';
+    position: absolute;
+    left: 2rem;
+    top: 100%;
+    width: 0;
+    height: 0;
+    border: 0.7rem solid transparent;
+}
+
+.balloon-gray {
+  background: #f0f0f0;
+  border-top: solid 3px #ccc;
+}
+
+.balloon-gray::before {
+  border-top-color: #f0f0f0;
+}
+
+
+
+
+/**
+ * サイトヘッダー
+ */
+
+.site-header {
+  position: relative;
+  /* box-shadow: 0 3px 8px rgba(0,0,0,.25); */
+} 
+
+.home .site-header {
+  box-shadow: 0px 8px 10px -8px rgba(0,0,0,.5);
+}
+
+.site-title {
+  max-width: 160px
+}
+
+.site-header-inner {
+  padding: 2rem 0;
+}
+
+.global-menu ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.global-menu li+li {
+  padding-left: 1.5rem;
+}
+
+.global-menu a {
+  color: #333;
+}
+
+
+
+
+
+/**
+ * パンくずリスト
+ */
+#breadcrumb {
+  font-size: .8rem;
+  background: #f5f5f5;
+  padding: 15px 0;
+  margin-bottom: 0;
+  color: var(--secondary);
+  /* box-shadow: 0 3px 8px rgba(0,0,0,.25); */
+  box-shadow: 0px 8px 10px -8px rgba(0,0,0,.5);
+  position: relative;
+}
+
+.breadcrumb-list ul{
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  overflow-y: hidden;
+  overflow-x: auto;
+  list-style: none;
+}
+
+.breadcrumb-list li {
+  display: inline;
+  padding: 0;
+}
+
+.breadcrumb-list li:first-child::before {
+  content: '\e9a3';
+  font-family: 'unicons';
+  color: #bbb;
+  margin-right: 4px;
+}
+
+.breadcrumb-list li:not(:last-child)::after {
+    
+    content: '\eb6d';
+    font-family: 'unicons';
+    color: #bbb;
+  padding: 0 8px;
+}
+
+.breadcrumb-list li a {
+  color: var(--secondary);
+}
+
+
+
+
+
+/**
+ * ヘッダー
+ */
+.page-header {
+  background: linear-gradient(to right, #505763 50%, transparent 100%), url('https://images.unsplash.com/photo-1592853329684-904a349df70d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60');
+  background: linear-gradient(to right, #505763 50%, transparent 100%), url('http://demo.local/wp-content/themes/neko/images/common/cat.png');
+  background-repeat: no-repeat;
+  background-position: left top, right top;
+}
+
+.page-title {
+  font-size: 1.75rem;
+  color: #fff;
+  margin-bottom: 0;
+}
+
+
+
+
+/**
+ * 企業情報 検索ページ
+ */
+.checkbox {
+  box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    height: 3rem;
+    padding: .6rem;
+    margin-right: .3rem;
+    background: #f7f5f0;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.checkbox span {
+  padding-left: .4rem;
+}
+
+.search-results-item {
+  border-bottom: solid 1px #eee;
+  padding: 1rem 1.5rem;
+}
+
+.search-results-item:nth-child(even){
+  background: #fafafa;
+}
+
