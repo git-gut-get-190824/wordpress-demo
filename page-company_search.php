@@ -33,21 +33,27 @@
             <input class="btn btn-lg btn-primary" type="submit" value="検索">
         </p>
     </form>
+    <hr class="my-5">
 
-    <!-- 検索結果 -->
+    
     <?php
+    // 検索フォームの入力値をもとにサブクエリ発行
     if( !empty($_GET) ):
+
+        $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; // ページ番号
+        $posts_per_page = 1; // 1ページに表示する投稿数
 
         // サブクエリに投げる条件のベース
         $args = array(
-                //'numberposts' => -1,
+                'posts_per_page' => $posts_per_page,
                 'post_type' => 'company',
+                'paged' => $paged,
                 'meta_query' => array(
                     'relation' => 'AND',
                 ),
         );
 
-        // サブクエリ条件ベースに追加
+        // サブクエリ条件 meta_queryに追加
         foreach( $target_fields as $target_field_slug ){
             $value = $_GET[$target_field_slug];
             if( !empty($value) ){
@@ -70,8 +76,8 @@
         
     ?>
 
-    <hr class="my-5">
-
+  
+    <!-- 検索条件 -->
     <div class="balloon-gray">
         <h2 class="h5 font-weight-bold">検索条件</h2>
         <dl class="clearfix mb-0">
@@ -85,9 +91,10 @@
         </dl>
     </div>
 
+    <!-- 検索結果 -->
     <?php if( $the_query->have_posts() ):?>
     <p><?php echo $the_query->found_posts; ?>件見つかりました。</p>
-    <dl class="serach-results">
+    <dl class="search-results">
         <?php while($the_query->have_posts()): ?>
             <?php $the_query->the_post(); ?>
             <div class="search-results-item">
@@ -104,6 +111,27 @@
             </div>
         <?php endwhile; ?>
     </dl>
+
+    <!-- ページネーション --> 
+    <?php 
+            $big = 999999999; 
+            $args = array( 
+              'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ), 
+              'current' => max( 1, get_query_var( 'paged' ) ), 
+              'format' => 'page/%#%/', 
+              'prev_next' => true, // 前へ・次へボタンの表示 
+              'prev_text'    => __('&laquo;'), // 前へ のテキスト
+              'next_text'    => __('&raquo;'), // 次へ のテキスト
+              'type'    => 'array', 
+              'total' => $the_query->max_num_pages 
+            ); 
+            if ( paginate_links( $args ) ) : ?> 
+            <ul class="p-pager"> 
+              <?php foreach ( paginate_links( $args ) as $link ) : ?> 
+              <li class="p-pager__item"><?php echo $link; ?></li> 
+              <?php endforeach; ?> 
+            </ul> 
+            <?php endif; ?> 
 
     <?php else: ?>
     <p>見つかりませんでした。</p>
